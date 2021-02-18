@@ -8,7 +8,6 @@ from Core.EventSystem import EventSystem
 from Core.Display import Dispaly
 from Model.DataBase import DataBase
 from Class.Config import Config
-
 import random
 
 
@@ -35,10 +34,9 @@ class GameSystem(metaclass=Solide):
         config = Config("game.json")
         config.load()
 
-
         pygame.mixer.music.load("endofline.ogg")
         sound_effect = pygame.mixer.Sound("beep.wav")
-        
+
         self.__main_display = pygame.display.set_mode((config.get_window("Width"), config.get_window("Height")), 0, 32)
 
         DataBase().set_position_ball(config.get_position("Ball"))
@@ -54,13 +52,14 @@ class GameSystem(metaclass=Solide):
 
         self.__map = Map(config.get_color("Red"), config.get_color("Turquoise"))
 
-
         event_system = EventSystem({"paddle": {"left": self.__paddle_left,
                                                "right": self.__paddle_right}, "ball": self.__ball, "map": self.__map},
                                    self)
+        
         Dispaly().init(config.get_window("Height") - 300,
                        config.get_window("Width"), config.get_color("White"), config.get_color("Black"),
                        self.__main_display)
+        
         GameSystem().init({"side": "left", "player": self.__paddle_left}, event_system)
 
         self.__main_sprites.add(*self.__map.get_borders_render())
@@ -103,6 +102,5 @@ class GameSystem(metaclass=Solide):
         self.__main_display.fill(config.get_color("Black"))
 
         Dispaly().render_game_over(i, (config.get_window("Height") // 2, config.get_window("Width") // 2))
-
         pygame.display.update()
         time.sleep(2)

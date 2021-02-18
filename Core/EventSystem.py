@@ -10,7 +10,6 @@ from Class.Config import Config
 from Core.Ball import Ball
 
 
-
 class EventSystem(metaclass=Solide):
     def __init__(self, game_objects, game_system):
         self.__game_objects = game_objects
@@ -81,7 +80,6 @@ class EventSystem(metaclass=Solide):
     def energy_map(self, id_energy, flag):
         config = Config("game.json")
         config.load()
-
         for i, z in zip(id_energy, flag):
             energy = self.__game_objects["map"].get_energy_render()[i]
             energy.is_energy = z
@@ -89,4 +87,3 @@ class EventSystem(metaclass=Solide):
                 energy.image.fill(config.get_color("Turquoise"))
             else:
                 energy.image.fill(config.get_color("Black"))
-
