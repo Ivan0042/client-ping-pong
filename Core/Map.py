@@ -58,3 +58,4 @@ class Map:
 
     def get_energy(self):
         return self.__energys
+

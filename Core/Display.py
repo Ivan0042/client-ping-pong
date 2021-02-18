@@ -35,6 +35,7 @@ class Dispaly(metaclass=Solide):
         score_board_rect = score_board.get_rect()
         score_board_rect.centerx = self.__width // 2
         score_board_rect.y = self.__height + 75
+
         self.__display.blit(score_board, score_board_rect)
 
     def render_energy_hud(self, energy, x):
@@ -42,6 +43,7 @@ class Dispaly(metaclass=Solide):
         energy_board_rect = energy_board.get_rect()
         energy_board_rect.centerx = x
         energy_board_rect.y = self.__height + (300 // 2)
+
         self.__display.blit(energy_board, energy_board_rect)
 
     def render_game_over(self, player, coord):
