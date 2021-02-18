@@ -11,13 +11,13 @@ from Model.DataBaseNetwork import DataBaseNetwork
 from Class.CommandPars import CommandPars
 
 counter = 0
+
 user_name = 'Игрок'
 ip = 42
 color = 'white'
     
 def network_core(net, mmr):
     net.send_message({"Type_Command": "Login", "Name_user": user_name, "Color": color, "Ip_user": ip, "Mmr_user": mmr})
-
     while True:
         command = net.listener()
         if command is not None:
@@ -26,10 +26,9 @@ def network_core(net, mmr):
             break
     net.close()
 
-    
+
 def game_start(co=0):
     global user_name
-
     pygame.init()
     clock = pygame.time.Clock()
 
@@ -47,7 +46,7 @@ def game_start(co=0):
         co += 1
     pygame.quit()
 
-
+    
 def game_menu():
     global user_name, color
     co = 0
